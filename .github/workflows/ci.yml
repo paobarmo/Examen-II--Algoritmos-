@@ -1,0 +1,57 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  java:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Detectar proyecto Java
+        id: detectar
+        run: |
+          if [ -f java/pom.xml ]; then echo "existe=true" >> "$GITHUB_OUTPUT"; else echo "existe=false" >> "$GITHUB_OUTPUT"; fi
+      - uses: actions/setup-java@v5
+        if: steps.detectar.outputs.existe == 'true'
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven
+      - name: Pruebas Java
+        if: steps.detectar.outputs.existe == 'true'
+        working-directory: java
+        run: mvn -B test
+
+  csharp:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Detectar proyecto C#
+        id: detectar
+        run: |
+          if [ -f csharp/Examen2.sln ]; then echo "existe=true" >> "$GITHUB_OUTPUT"; else echo "existe=false" >> "$GITHUB_OUTPUT"; fi
+      - uses: actions/setup-dotnet@v5
+        if: steps.detectar.outputs.existe == 'true'
+        with:
+          dotnet-version: '8.x'
+      - name: Pruebas C#
+        if: steps.detectar.outputs.existe == 'true'
+        working-directory: csharp
+        run: dotnet test
+
+  restricciones:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Verificar restricciones
+        run: |
+          bash scripts/verificar-restricciones.sh | tee salida.txt
+          grep -E '^[^:]+:[0-9]+:' salida.txt | while IFS= read -r linea; do
+            archivo="${linea%%:*}"
+            resto="${linea#*:}"
+            num="${resto%%:*}"
+            texto="${resto#*:}"
+            echo "::warning file=${archivo},line=${num}::Uso posiblemente prohibido: ${texto}"
+          done || true

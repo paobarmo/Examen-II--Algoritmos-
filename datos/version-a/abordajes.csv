@@ -1,0 +1,9 @@
+codigo,parada,zona,abordajes
+S01,Terminal,Centro,1520
+S02,Mercado,Centro,980
+S03,Universidad,Norte,1310
+S04,Faro,Costa,640
+S05,Estadio,Norte,980
+S06,Parque,Norte,455
+S07,Playa,Costa,640
+S08,Hospital,Centro,1310

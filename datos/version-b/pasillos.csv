@@ -1,0 +1,16 @@
+desde,hacia,segundos,estado
+Salida Norte,Pasillo A,20,Abierto
+Pasillo A,LAB-101,10,Abierto
+Pasillo A,LAB-102,15,Abierto
+LAB-101,LAB-102,6,Abierto
+LAB-102,Pasillo B,12,Abierto
+Pasillo B,RM-103,8,Abierto
+Pasillo B,Salida Este,20,Bloqueado
+Pasillo B,Pasillo C,14,Abierto
+Pasillo B,LIB-001,16,Abierto
+RM-103,RM-104,10,Abierto
+RM-104,Pasillo C,9,Abierto
+Pasillo C,Salida Sur,18,Abierto
+Pasillo C,OFF-105,7,Abierto
+OFF-105,LIB-001,12,Abierto
+LIB-001,Salida Este,25,Abierto

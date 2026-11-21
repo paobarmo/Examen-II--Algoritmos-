@@ -1,0 +1,14 @@
+linea,desde,hacia,minutos
+Bus 1,Terminal,Mercado,6
+Bus 1,Mercado,Universidad,7
+Bus 1,Universidad,Faro,9
+Bus 2,Terminal,Estadio,5
+Bus 2,Estadio,Parque,4
+Bus 2,Parque,Faro,6
+Bus 2,Faro,Playa,5
+Bus 2,Playa,Terminal,12
+Bus 3,Mercado,Hospital,4
+Bus 3,Hospital,Universidad,3
+Bus 3,Universidad,Playa,15
+Bus 4,Parque,Universidad,2
+Caminata (ambos sentidos),Mercado,Parque,10

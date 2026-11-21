@@ -1,0 +1,25 @@
+# Java / Maven
+target/
+*.class
+*.jar
+*.war
+*.log
+hs_err_pid*
+
+# .NET
+bin/
+obj/
+*.user
+*.suo
+*.userprefs
+.vs/
+TestResults/
+*.nupkg
+
+# Editores y sistema
+.idea/
+.vscode/
+*.iml
+*.swp
+.DS_Store
+Thumbs.db
